@@ -355,7 +355,7 @@ nav a:hover::after, nav a.active::after{width:100%;}
 
 /* ---------- HERO ---------- */
 .hero{
-  padding:88px 0 48px;
+  padding:112px 0 60px;
   position:relative;
   overflow: hidden;
 }
@@ -369,7 +369,7 @@ nav a:hover::after, nav a.active::after{width:100%;}
 }
 
 @media(max-width:900px){
-  .hero{ padding:52px 0 32px; }
+  .hero{ padding:68px 0 40px; }
   .hero-grid{
     grid-template-columns:1fr;
     gap:32px;
@@ -591,10 +591,10 @@ nav a:hover::after, nav a.active::after{width:100%;}
 .marquee-strip{
   background:var(--ink);
   color:var(--cream);
-  padding:14px 0;
+  padding:16px 0;
   overflow:hidden;
   white-space:nowrap;
-  margin-top:36px;
+  margin-top:68px;
   border-top:1px solid rgba(244,238,228,0.08);
   border-bottom:1px solid rgba(244,238,228,0.08);
 }
