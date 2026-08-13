@@ -376,32 +376,55 @@ nav a:hover::after, nav a.active::after{width:100%;}
   }
 }
 
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:var(--white);
-  border:1px solid var(--line);
-  padding:6px 14px 6px 8px;
-  border-radius:100px;
-  font-size:0.82rem;
-  font-weight:600;
-  color:var(--text-soft);
-  margin-bottom:20px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(245, 166, 35, 0.08);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  padding: 7px 16px 7px 12px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
 }
-.eyebrow .dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--orange);
-  box-shadow:0 0 0 3px rgba(245,166,35,0.25);
+.eyebrow:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange);
+  box-shadow: 0 12px 30px rgba(245, 166, 35, 0.25);
+}
+.eyebrow .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
   animation: pulse-dot 2s infinite;
 }
+.eyebrow-badge {
+  background: var(--orange);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 100px;
+  margin-left: 4px;
+  letter-spacing: 0.06em;
+}
 @keyframes pulse-dot {
-  0% { box-shadow: 0 0 0 0 rgba(245,166,35,0.6); }
-  70% { box-shadow: 0 0 0 8px rgba(245,166,35,0); }
-  100% { box-shadow: 0 0 0 0 rgba(245,166,35,0); }
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .hero h1{
@@ -509,6 +532,13 @@ nav a:hover::after, nav a.active::after{width:100%;}
   min-height: 150px;
   max-height: 190px;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.term-lines::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 .term-lines .k{color:var(--orange);}
 .term-lines .s{color:#8B7CF6;}
@@ -640,23 +670,49 @@ nav a:hover::after, nav a.active::after{width:100%;}
 section{padding:72px 0;position:relative;}
 @media(max-width:768px){ section{ padding:44px 0; } }
 
-.section-tag{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:0.82rem;
-  font-weight:600;
-  color:var(--orange-2);
-  margin-bottom:12px;
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 166, 35, 0.08);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
-.section-tag .bar{
-  width:20px;
-  height:2px;
-  background:var(--orange);
-  transition: width 0.4s ease;
+.section-tag:hover {
+  background: rgba(245, 166, 35, 0.16);
+  border-color: var(--orange);
+  transform: translateY(-1px);
 }
-.reveal.in .section-tag .bar{
-  width: 32px;
+.section-tag .bar {
+  width: 14px;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.reveal.in .section-tag .bar {
+  width: 22px;
+}
+.section-tag .spark {
+  color: var(--orange);
+  font-size: 0.82rem;
+  display: inline-block;
+  animation: spin-spark 8s linear infinite;
+}
+@keyframes spin-spark {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 .section-head{
   display:flex;
