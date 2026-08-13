@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const termBtns = document.querySelectorAll('.term-btn');
 
   const commands = {
-    whoami: 'philip_asante — full-stack dev (Ghana)',
+    whoami: 'philip_asante, full-stack dev (Ghana)',
     projects: 'stockflow/ (POS) | aurum/ (E-Commerce) | ace-hub/ (Quiz)',
     status: '"3 systems in production. Available for work!"',
     stack: 'Java · Spring Boot · Node.js · Express · React · PostgreSQL',
