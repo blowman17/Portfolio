@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     projects: 'stockflow/ (POS) | aurum/ (E-Commerce) | ace-hub/ (Quiz)',
     status: '"3 systems in production. Available for work!"',
     stack: 'Java · Spring Boot · Node.js · Express · React · PostgreSQL',
-    contact: 'Email: phillipasante006@gmail.com | WhatsApp: +233 53 185 8109',
+    contact: 'Email: philipdev1717@gmail.com | WhatsApp: +233 53 185 8109',
     github: 'https://github.com/blowman17',
     clear: null
   };
