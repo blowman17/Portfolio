@@ -10,6 +10,7 @@
   --text-soft:#6B6459;
   --line: rgba(26,22,19,0.12);
   --radius: 22px;
+  --font-main: 'Verdana', Geneva, sans-serif;
 }
 
 *{
@@ -27,7 +28,7 @@ html{
 body{
   background:var(--cream);
   color:var(--text);
-  font-family:'Inter',sans-serif;
+  font-family:var(--font-main);
   overflow-x:hidden;
   width:100%;
   position:relative;
@@ -41,7 +42,7 @@ body.menu-open{
 }
 
 h1,h2,h3,.display{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-main);
   letter-spacing:-0.02em;
 }
 
@@ -808,7 +809,7 @@ section{padding:72px 0;position:relative;}
 }
 .about-stat{text-align:center; flex:1;}
 .about-stat .num{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-main);
   font-size:1.4rem;
   font-weight:700;
   color:var(--orange);
@@ -871,7 +872,7 @@ section{padding:72px 0;position:relative;}
   font-weight:700;
   font-size:0.82rem;
 }
-.tool-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.98rem;}
+.tool-name{font-family:var(--font-main);font-weight:600;font-size:0.98rem;}
 .tool-bar{height:4px;border-radius:4px;background:rgba(244,238,228,0.1);overflow:hidden;}
 .tool-bar-fill{height:100%;background:var(--orange);border-radius:4px;transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);}
 .tool-pct{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#B8AF9F;}
@@ -972,7 +973,7 @@ section{padding:72px 0;position:relative;}
   box-shadow: 0 12px 28px rgba(0,0,0,0.06);
 }
 .journey-col h3{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-main);
   font-weight:600;
   font-size:1.1rem;
   display:flex;
@@ -1102,7 +1103,7 @@ section{padding:72px 0;position:relative;}
   letter-spacing: 0.05em;
 }
 .contact-val {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-main);
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--cream);
@@ -1334,7 +1335,7 @@ button.project-link {
   margin-bottom: 8px;
 }
 .modal-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-main);
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 14px;
@@ -1346,7 +1347,7 @@ button.project-link {
   margin-bottom: 20px;
 }
 .modal-section-h4 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-main);
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--cream);
@@ -1389,7 +1390,7 @@ button.project-link {
   color: #8B8173;
 }
 .modal-stat-box .val {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-main);
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--orange);
