@@ -256,14 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
       features: [
         '17 specialized business modules: POS terminal, stock control, sales reporting, and supplier tracking.',
         'On-Premise Client-Server Architecture: Server PC hosts the web backend while cashier & manager PCs connect via LAN.',
-        'Ultra-fast local SQLite database architecture optimized for instant local queries and offline business continuity.',
+        'High-performance PostgreSQL database architecture optimized for reliable query speed, data integrity, and multi-user LAN access.',
         'Custom dark purple/indigo glassmorphism UI built with modular Vanilla JS (3,500+ lines of codebase).'
       ],
       stats: [
         { label: 'DEPLOYMENT', value: 'Local Server PC' },
         { label: 'NETWORK', value: 'LAN Client-Server' },
         { label: 'MODULES', value: '17 Active' },
-        { label: 'DATABASE', value: 'SQLite (Local)' }
+        { label: 'DATABASE', value: 'PostgreSQL' }
       ],
       githubUrl: 'https://github.com/blowman17/stockflow-access'
     },
