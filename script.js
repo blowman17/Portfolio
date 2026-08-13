@@ -388,8 +388,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (track && prevBtn && nextBtn && dotsContainer) {
     const slides = Array.from(track.children);
-    const dots = Array.from(dotsContainer.children);
     let currentIndex = 0;
+
+    // Dynamically generate dots for all slides
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = `dot ${idx === 0 ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+      dot.addEventListener('click', () => updateCarousel(idx));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.children);
 
     function updateCarousel(index) {
       if (index < 0) index = slides.length - 1;
@@ -409,10 +420,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
     nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
-
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => updateCarousel(idx));
-    });
 
     // Touch swipe support for mobile
     let touchStartX = 0;
