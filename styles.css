@@ -1403,3 +1403,168 @@ button.project-link {
   flex-wrap: wrap;
   margin-top: 24px;
 }
+
+/* ---------- DESIGN CAROUSEL SHOWCASE ---------- */
+.designs {
+  background: var(--ink-2);
+  color: var(--cream);
+  padding: 80px 0;
+  border-top: 1px solid rgba(244, 238, 228, 0.08);
+  border-bottom: 1px solid rgba(244, 238, 228, 0.08);
+}
+.designs .section-tag {
+  color: var(--orange);
+}
+.designs .section-sub {
+  color: #B8AF9F;
+}
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+.carousel-track-container {
+  overflow: hidden;
+  border-radius: 24px;
+  width: 100%;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+.design-card {
+  background: var(--ink);
+  border: 1px solid rgba(244, 238, 228, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+@media(max-width: 860px) {
+  .design-card {
+    grid-template-columns: 1fr;
+  }
+}
+.design-preview-box {
+  background: linear-gradient(135deg, rgba(139, 124, 246, 0.15), rgba(245, 166, 35, 0.15));
+  min-height: 280px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(244, 238, 228, 0.08);
+}
+.design-preview-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.design-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--orange);
+  background: rgba(26, 22, 19, 0.7);
+  padding: 6px 12px;
+  border-radius: 100px;
+  align-self: flex-start;
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  position: relative;
+  z-index: 2;
+}
+.design-placeholder-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto 0;
+  position: relative;
+  z-index: 2;
+}
+.design-symbol {
+  font-size: 2.5rem;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.design-title-preview {
+  font-family: var(--font-main);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+.design-sub-preview {
+  font-size: 0.85rem;
+  color: #B8AF9F;
+  margin-top: 4px;
+}
+.design-info {
+  padding: 40px;
+}
+.design-info h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--cream);
+}
+.design-info p {
+  color: #C9C1B4;
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+.carousel-btn {
+  background: rgba(244, 238, 228, 0.08);
+  border: 1px solid rgba(244, 238, 228, 0.15);
+  color: var(--cream);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+.carousel-btn:hover {
+  background: var(--orange);
+  color: var(--ink);
+  border-color: var(--orange);
+}
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+.carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(244, 238, 228, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+.carousel-dots .dot.active {
+  background: var(--orange);
+  width: 24px;
+  border-radius: 10px;
+}

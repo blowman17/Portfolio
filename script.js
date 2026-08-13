@@ -380,4 +380,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ---------- DESIGN CAROUSEL SHOWCASE ----------
+  const track = document.getElementById('design-carousel-track');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const dotsContainer = document.getElementById('carousel-dots');
+
+  if (track && prevBtn && nextBtn && dotsContainer) {
+    const slides = Array.from(track.children);
+    const dots = Array.from(dotsContainer.children);
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      
+      currentIndex = index;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => updateCarousel(idx));
+    });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 40) {
+        updateCarousel(currentIndex + 1);
+      } else if (touchEndX - touchStartX > 40) {
+        updateCarousel(currentIndex - 1);
+      }
+    }, { passive: true });
+  }
+
 });
