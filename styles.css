@@ -106,7 +106,7 @@ header::before{
   background:rgba(244,238,228,0.88);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line);
+  border-bottom:none;
   z-index:1;
   transition: opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
