@@ -265,7 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'NETWORK', value: 'LAN Client-Server' },
         { label: 'MODULES', value: '17 Active' },
         { label: 'DATABASE', value: 'SQLite (Local)' }
-      ]
+      ],
+      githubUrl: 'https://github.com/blowman17/stockflow-access'
     },
     aurum: {
       role: 'LUXURY E-COMMERCE PLATFORM',
@@ -283,7 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'PAYMENTS', value: 'Paystack' },
         { label: 'SMS ALERTS', value: 'Hubtel' }
       ],
-      liveUrl: 'https://aurum-udfm.onrender.com'
+      liveUrl: 'https://aurum-udfm.onrender.com',
+      githubUrl: 'https://github.com/blowman17/aurum'
     },
     acehub: {
       role: 'ONLINE QUIZ SYSTEM · INF218',
@@ -323,6 +325,12 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>
     ` : '';
 
+    let githubBtnHtml = data.githubUrl ? `
+      <a href="${data.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(244,238,228,0.2);">
+        View GitHub Repo ↗
+      </a>
+    ` : '';
+
     modalContent.innerHTML = `
       <div class="modal-tag">${data.role}</div>
       <h3 class="modal-title">${data.title}</h3>
@@ -339,7 +347,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div class="modal-actions">
         ${liveBtnHtml}
-        <button class="btn btn-ghost" onclick="closeCaseStudyModal()">Close Case Study</button>
+        ${githubBtnHtml}
+        <button class="btn btn-ghost" onclick="closeCaseStudyModal()">Close</button>
       </div>
     `;
 
