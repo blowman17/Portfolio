@@ -251,20 +251,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const projectCaseStudies = {
     stockflow: {
-      role: 'INVENTORY & POS SYSTEM',
+      role: 'ON-PREMISE INVENTORY & POS SYSTEM',
       title: 'StockFlow',
-      description: 'StockFlow is a complete, full-stack inventory management and point-of-sale system engineered for retail and wholesale businesses. It features fast barcode scanning, automated receipt generation, low-stock warnings, and a responsive 17-module admin dashboard.',
+      description: 'StockFlow is an on-premise inventory management and point-of-sale web application designed to run locally on a business server PC. It connects client devices over a Local Area Network (LAN) without requiring public web hosting, providing zero-latency transactions, offline reliability, fast barcode scanning, and automated receipt printing.',
       features: [
         '17 specialized business modules: POS terminal, stock control, sales reporting, and supplier tracking.',
-        'Ultra-fast SQLite database architecture optimized for instant local queries and zero-latency transactions.',
-        'Custom dark purple/indigo glassmorphism UI built with modular Vanilla JS (3,500+ lines of codebase).',
-        'Built-in barcode scanner integration and receipt printing workflows.'
+        'On-Premise Client-Server Architecture: Server PC hosts the web backend while cashier & manager PCs connect via LAN.',
+        'Ultra-fast local SQLite database architecture optimized for instant local queries and offline business continuity.',
+        'Custom dark purple/indigo glassmorphism UI built with modular Vanilla JS (3,500+ lines of codebase).'
       ],
       stats: [
+        { label: 'DEPLOYMENT', value: 'Local Server PC' },
+        { label: 'NETWORK', value: 'LAN Client-Server' },
         { label: 'MODULES', value: '17 Active' },
-        { label: 'DATABASE', value: 'SQLite' },
-        { label: 'CODEBASE', value: '3,595 Lines' },
-        { label: 'UI THEME', value: 'Purple Glass' }
+        { label: 'DATABASE', value: 'SQLite (Local)' }
       ]
     },
     aurum: {
