@@ -418,8 +418,45 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
-    nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+    // Auto-scroll mechanism (slides every 4 seconds)
+    let autoScrollTimer = null;
+    const autoScrollInterval = 4000;
+
+    function startAutoScroll() {
+      stopAutoScroll();
+      autoScrollTimer = setInterval(() => {
+        updateCarousel(currentIndex + 1);
+      }, autoScrollInterval);
+    }
+
+    function stopAutoScroll() {
+      if (autoScrollTimer) {
+        clearInterval(autoScrollTimer);
+        autoScrollTimer = null;
+      }
+    }
+
+    // Start auto scroll
+    startAutoScroll();
+
+    // Pause auto scroll on hover/touch
+    const wrapper = track.closest('.carousel-wrapper');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', stopAutoScroll);
+      wrapper.addEventListener('mouseleave', startAutoScroll);
+      wrapper.addEventListener('touchstart', stopAutoScroll, { passive: true });
+      wrapper.addEventListener('touchend', startAutoScroll, { passive: true });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      updateCarousel(currentIndex - 1);
+      startAutoScroll();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      updateCarousel(currentIndex + 1);
+      startAutoScroll();
+    });
 
     // Touch swipe support for mobile
     let touchStartX = 0;
@@ -427,6 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     track.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
+      stopAutoScroll();
     }, { passive: true });
 
     track.addEventListener('touchend', (e) => {
@@ -436,6 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (touchEndX - touchStartX > 40) {
         updateCarousel(currentIndex - 1);
       }
+      startAutoScroll();
     }, { passive: true });
   }
 
