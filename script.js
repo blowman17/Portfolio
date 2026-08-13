@@ -270,10 +270,10 @@ document.addEventListener('DOMContentLoaded', () => {
     aurum: {
       role: 'LUXURY E-COMMERCE PLATFORM',
       title: 'AURUM',
-      description: 'AURUM is a live, production-grade luxury e-commerce platform tailored for Ghanaian mobile networks and payment gateways. It provides seamless mobile money and card checkout via Paystack alongside automated SMS notifications via Hubtel API.',
+      description: 'AURUM is a live, production-grade luxury e-commerce platform tailored for Ghanaian mobile money and card checkout. It provides seamless payments via Paystack alongside automated transactional email notifications powered by Resend API.',
       features: [
         'Paystack Payment Gateway integration handling instant Mobile Money and credit card transactions.',
-        'Hubtel SMS API integration sending real-time automated order confirmations to Ghanaian buyers.',
+        'Resend API integration sending real-time automated order confirmation and receipt emails to buyers.',
         'Supabase PostgreSQL database powering high-frequency inventory, cart, and user session management.',
         'Deployed and actively hosted live on Render.'
       ],
@@ -281,25 +281,25 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'STATUS', value: 'Live' },
         { label: 'HOSTING', value: 'Render' },
         { label: 'PAYMENTS', value: 'Paystack' },
-        { label: 'SMS ALERTS', value: 'Hubtel' }
+        { label: 'EMAILS', value: 'Resend API' }
       ],
       liveUrl: 'https://aurum-udfm.onrender.com',
       githubUrl: 'https://github.com/blowman17/aurum'
     },
     acehub: {
-      role: 'ONLINE QUIZ SYSTEM · INF218',
+      role: 'ACADEMIC SCHOOL PROJECT · INF218',
       title: 'Ace Hub',
-      description: 'Ace Hub is an object-oriented online examination and quiz platform created for INF218 Object-Oriented Programming at UCC. It features real-time test timing, automated grading algorithms, score analytics, and multi-tier student/lecturer portals.',
+      description: 'Ace Hub is an object-oriented online examination and quiz platform engineered and presented as a school project assignment for INF218 Object-Oriented Programming at UCC. It features real-time test timing, automated grading algorithms, score analytics, and multi-tier student/lecturer portals.',
       features: [
         'Enterprise Java & Spring Boot backend enforcing object-oriented design patterns.',
         'Engineered automated test evaluation engine supporting timed assessments and instant score calculation.',
         'Role-based access control (RBAC) separating student exam portals from lecturer quiz builder suites.',
-        'Formally presented and evaluated with top academic standing.'
+        'Formally presented and evaluated as an INF218 Object-Oriented Programming school project assignment.'
       ],
       stats: [
         { label: 'BACKEND', value: 'Java / Spring' },
         { label: 'COURSE', value: 'INF218' },
-        { label: 'ARCHITECTURE', value: 'OOP' },
+        { label: 'TYPE', value: 'School Assignment' },
         { label: 'STATUS', value: 'Presented' }
       ]
     }
