@@ -395,6 +395,12 @@ nav a:hover::after, nav a.active::after{width:100%;}
   margin-bottom:26px;
   line-height:1.55;
 }
+.name-highlight {
+  color: var(--ink);
+  font-weight: 700;
+  border-bottom: 2px solid var(--orange);
+  padding-bottom: 1px;
+}
 .hero-actions{
   display:flex;
   gap:12px;
