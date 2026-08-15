@@ -814,8 +814,6 @@ section{padding:72px 0;position:relative;}
   margin-bottom:14px;
   font-size:0.96rem;
 }
-.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
-.about-tags .pill{background:var(--cream-2);}
 
 /* ---------- TOOLS ---------- */
 .tools{background:var(--ink);color:var(--cream);}
