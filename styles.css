@@ -898,9 +898,6 @@ section{padding:72px 0;position:relative;}
   border-color: var(--ink);
   box-shadow: 0 16px 36px rgba(0,0,0,0.08);
 }
-.project-tags{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
-.project-tags .pill{background:rgba(244,238,228,0.08);border-color:rgba(244,238,228,0.12);color:#D9D2C4;}
-.project-card.alt .project-tags .pill{background:var(--cream-2);border-color:var(--line);color:var(--text-soft);}
 .project-card h3{font-size:1.55rem;font-weight:700;margin-bottom:8px;}
 .project-card .role{color:var(--orange);font-size:0.82rem;font-weight:600;margin-bottom:12px;font-family:'JetBrains Mono',monospace;}
 .project-card p{color:#C9C1B4;line-height:1.6;font-size:0.92rem;margin-bottom:18px;}
