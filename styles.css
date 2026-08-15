@@ -377,9 +377,9 @@ nav a:hover::after, nav a.active::after{width:100%;}
 }
 
 .hero h1{
-  font-size:clamp(2rem, 5vw, 3.8rem);
+  font-size:clamp(1.8rem, 3.8vw, 3rem);
   font-weight:700;
-  line-height:1.08;
+  line-height:1.15;
   margin-bottom:16px;
 }
 .hero h1 .accent{
