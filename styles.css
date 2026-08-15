@@ -1230,21 +1230,29 @@ section{padding:72px 0;position:relative;}
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(245, 166, 35, 0.15);
-  color: var(--orange);
+  background: rgba(234, 67, 53, 0.15);
+  color: #EA4335;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
   flex-shrink: 0;
 }
+.contact-icon.email-ic {
+  background: rgba(234, 67, 53, 0.15);
+  color: #EA4335;
+}
 .contact-icon.wa-ic {
   background: rgba(37, 211, 102, 0.15);
   color: #25D366;
 }
 .contact-icon.gh-ic {
-  background: rgba(139, 124, 246, 0.15);
-  color: #8B7CF6;
+  background: rgba(240, 80, 50, 0.15);
+  color: #F05032;
+}
+.contact-icon.li-ic {
+  background: rgba(10, 102, 194, 0.15);
+  color: #0A66C2;
 }
 .contact-info {
   display: flex;
