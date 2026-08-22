@@ -248,7 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalContent = document.getElementById('modal-content');
   const modalCloseBtn = document.getElementById('modal-close-btn');
 
-  const projectCaseStudies = {
+  // ---------- DYNAMIC CMS DATA LOADER ----------
+  let projectCaseStudies = {
     stockflow: {
       role: 'ON-PREMISE INVENTORY & POS SYSTEM',
       title: 'StockFlow',
@@ -304,6 +305,119 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     }
   };
+
+  async function loadCMSData() {
+    try {
+      const projRes = await fetch('content/projects.json');
+      if (projRes.ok) {
+        const projects = await projRes.json();
+        if (projects && projects.length) {
+          renderProjects(projects);
+        }
+      }
+    } catch (e) {
+      console.log('Using static projects fallback', e);
+    }
+
+    try {
+      const designRes = await fetch('content/designs.json');
+      if (designRes.ok) {
+        const designs = await designRes.json();
+        if (designs && designs.length) {
+          renderDesigns(designs);
+        }
+      }
+    } catch (e) {
+      console.log('Using static designs fallback', e);
+    }
+  }
+
+  function renderProjects(projects) {
+    const projContainer = document.querySelector('.project-list');
+    if (!projContainer) return;
+
+    projectCaseStudies = {}; // reset
+    let html = '';
+
+    projects.forEach((p, index) => {
+      const pId = p.id || `proj-${index}`;
+      projectCaseStudies[pId] = {
+        role: p.role || '',
+        title: p.title || '',
+        description: p.summary || p.description || '',
+        features: p.features || [],
+        stats: (p.visualStats || []).map(s => ({ label: (s.label || '').toUpperCase(), value: s.val || s.value || '' })),
+        liveUrl: p.liveUrl || '',
+        githubUrl: p.githubUrl || ''
+      };
+
+      const isAlt = index % 2 === 1;
+      let statsListHtml = (p.visualStats || []).map((s, idx, arr) => `
+        <div class="row" ${idx === arr.length - 1 ? 'style="border-bottom:none;"' : ''}>
+          <span>${s.label}</span><span class="val">${s.val || s.value}</span>
+        </div>
+      `).join('');
+
+      let liveBtn = p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link live-link">Visit Live Site ↗</a>` : '';
+      let githubBtn = p.githubUrl ? `<a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link">GitHub Code ↗</a>` : '';
+
+      html += `
+        <div class="project-card ${isAlt ? 'alt' : ''}">
+          <div>
+            <div class="role">${p.role}</div>
+            <h3>${p.title}</h3>
+            <p>${p.summary}</p>
+            <div class="project-actions-row">
+              <button class="project-link open-modal" data-project="${pId}">View Case Study →</button>
+              ${liveBtn}
+              ${githubBtn}
+            </div>
+          </div>
+          <div class="project-visual">
+            ${statsListHtml}
+          </div>
+        </div>
+      `;
+    });
+
+    projContainer.innerHTML = html;
+    bindModalBtns();
+  }
+
+  function renderDesigns(designs) {
+    const track = document.getElementById('design-carousel-track');
+    if (!track) return;
+
+    let slidesHtml = designs.map((d, index) => `
+      <div class="carousel-slide ${index === 0 ? 'active' : ''}">
+        <div class="design-card">
+          <div class="design-image-wrap">
+            <div class="design-badge-overlay">${d.badgeOverlay || 'DESIGN'}</div>
+            <img src="${d.image}" alt="${d.title}" loading="lazy">
+          </div>
+          <div class="design-info">
+            <div class="design-badge">${d.badge || 'CREATIVE'}</div>
+            <h3>${d.title}</h3>
+            <p>${d.description}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    track.innerHTML = slidesHtml;
+    initCarouselTrack();
+  }
+
+  function bindModalBtns() {
+    const openModalBtns = document.querySelectorAll('.open-modal');
+    openModalBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projKey = btn.getAttribute('data-project');
+        if (projKey) openCaseStudy(projKey);
+      });
+    });
+  }
 
   function openCaseStudy(key) {
     const data = projectCaseStudies[key];
@@ -363,14 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   };
 
-  const openModalBtns = document.querySelectorAll('.open-modal');
-  openModalBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const projKey = btn.getAttribute('data-project');
-      if (projKey) openCaseStudy(projKey);
-    });
-  });
+  bindModalBtns();
 
   if (modalCloseBtn) {
     modalCloseBtn.addEventListener('click', closeCaseStudyModal);
@@ -389,13 +496,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ---------- DESIGN CAROUSEL SHOWCASE ----------
-  const track = document.getElementById('design-carousel-track');
-  const prevBtn = document.getElementById('carousel-prev');
-  const nextBtn = document.getElementById('carousel-next');
-  const dotsContainer = document.getElementById('carousel-dots');
+  function initCarouselTrack() {
+    const track = document.getElementById('design-carousel-track');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const dotsContainer = document.getElementById('carousel-dots');
 
-  if (track && prevBtn && nextBtn && dotsContainer) {
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
     const slides = Array.from(track.children);
+    if (!slides.length) return;
+
     let currentIndex = 0;
 
     // Dynamically generate dots for all slides
@@ -456,26 +567,26 @@ document.addEventListener('DOMContentLoaded', () => {
       wrapper.addEventListener('touchend', startAutoScroll, { passive: true });
     }
 
-    prevBtn.addEventListener('click', () => {
+    prevBtn.onclick = () => {
       updateCarousel(currentIndex - 1);
       startAutoScroll();
-    });
+    };
 
-    nextBtn.addEventListener('click', () => {
+    nextBtn.onclick = () => {
       updateCarousel(currentIndex + 1);
       startAutoScroll();
-    });
+    };
 
     // Touch swipe support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
 
-    track.addEventListener('touchstart', (e) => {
+    track.ontouchstart = (e) => {
       touchStartX = e.changedTouches[0].screenX;
       stopAutoScroll();
-    }, { passive: true });
+    };
 
-    track.addEventListener('touchend', (e) => {
+    track.ontouchend = (e) => {
       touchEndX = e.changedTouches[0].screenX;
       if (touchStartX - touchEndX > 40) {
         updateCarousel(currentIndex + 1);
@@ -483,7 +594,11 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCarousel(currentIndex - 1);
       }
       startAutoScroll();
-    }, { passive: true });
+    };
   }
+
+  // Initialize carousel track with inline fallback or fetch from CMS
+  initCarouselTrack();
+  loadCMSData();
 
 });

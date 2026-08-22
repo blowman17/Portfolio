@@ -1,0 +1,61 @@
+[
+  {
+    "id": "stockflow",
+    "title": "StockFlow",
+    "role": "ON-PREMISE INVENTORY & POS SYSTEM",
+    "summary": "An on-premise inventory management and point-of-sale web application designed to run on a local server PC across client machines over LAN, featuring barcode scanning, 17 inventory modules, and a signature dark glass interface.",
+    "githubUrl": "https://github.com/blowman17/stockflow-access",
+    "liveUrl": "",
+    "visualStats": [
+      { "label": "Deployment", "val": "Local Server PC" },
+      { "label": "Network", "val": "Local LAN Clients" },
+      { "label": "Modules", "val": "17" },
+      { "label": "Database", "val": "PostgreSQL" },
+      { "label": "Architecture", "val": "Client-Server" }
+    ],
+    "features": [
+      "17 specialized business modules: POS terminal, stock control, sales reporting, and supplier tracking.",
+      "On-Premise Client-Server Architecture: Server PC hosts the web backend while cashier & manager PCs connect via LAN.",
+      "High-performance PostgreSQL database architecture optimized for reliable query speed, data integrity, and multi-user LAN access.",
+      "Custom dark purple/indigo glassmorphism UI built with modular Vanilla JS (3,500+ lines of codebase)."
+    ]
+  },
+  {
+    "id": "aurum",
+    "title": "AURUM",
+    "role": "LUXURY E-COMMERCE PLATFORM",
+    "summary": "A deployed luxury e-commerce site with Paystack payments and automated transactional email notifications powered by Resend API.",
+    "githubUrl": "https://github.com/blowman17/aurum",
+    "liveUrl": "https://aurum-udfm.onrender.com",
+    "visualStats": [
+      { "label": "Hosting", "val": "Render" },
+      { "label": "Payments", "val": "Paystack" },
+      { "label": "Notifications", "val": "Resend Email" },
+      { "label": "Status", "val": "Live" }
+    ],
+    "features": [
+      "Paystack Payment Gateway integration handling instant Mobile Money and credit card transactions.",
+      "Resend API integration sending real-time automated order confirmation and receipt emails to buyers.",
+      "Supabase PostgreSQL database powering high-frequency inventory, cart, and user session management.",
+      "Deployed and actively hosted live on Render."
+    ]
+  },
+  {
+    "id": "acehub",
+    "title": "Ace Hub",
+    "role": "ACADEMIC SCHOOL PROJECT · INF218",
+    "summary": "An object-oriented online quiz platform engineered and presented as a school project assignment for INF218 Object-Oriented Programming at UCC.",
+    "githubUrl": "",
+    "liveUrl": "",
+    "visualStats": [
+      { "label": "Course", "val": "INF218" },
+      { "label": "Type", "val": "School Assignment" }
+    ],
+    "features": [
+      "Enterprise Java & Spring Boot backend enforcing object-oriented design patterns.",
+      "Engineered automated test evaluation engine supporting timed assessments and instant score calculation.",
+      "Role-based access control (RBAC) separating student exam portals from lecturer quiz builder suites.",
+      "Formally presented and evaluated as an INF218 Object-Oriented Programming school project assignment."
+    ]
+  }
+]

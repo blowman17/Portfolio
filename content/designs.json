@@ -1,0 +1,66 @@
+[
+  {
+    "id": "youth-week-2026",
+    "badgeOverlay": "COMMUNITY & YOUTH EVENT",
+    "badge": "EVENT OUTLINE & POSTER",
+    "title": "Youth & Students Week Celebration 2026",
+    "description": "Official weeklong event schedule flyer engineered with structured day cards, bold layout geometry, and vibrant theme styling.",
+    "image": "assets/designs/youth-week-2026.jpg"
+  },
+  {
+    "id": "birthday-philip-asante",
+    "badgeOverlay": "BIRTHDAY CAMPAIGN",
+    "badge": "BIRTHDAY FLYER DESIGN",
+    "title": "Custom Birthday Flyer: Philip Asante",
+    "description": "Custom birthday graphic combining geometric frame overlays, bold modern typography, and polished visual framing.",
+    "image": "assets/designs/birthday-philip-asante.jpg"
+  },
+  {
+    "id": "birthday-georgina",
+    "badgeOverlay": "BIRTHDAY CAMPAIGN",
+    "badge": "BIRTHDAY FLYER DESIGN",
+    "title": "Custom Birthday Flyer: Georgina",
+    "description": "Elegant birthday design featuring soft blue background gradients, custom cursive typography, floating ribbon accents, and color-blocked photo framing.",
+    "image": "assets/designs/birthday-georgina.jpg"
+  },
+  {
+    "id": "friday-prayer-meeting",
+    "badgeOverlay": "WEEKLY EVENT POSTER",
+    "badge": "PROMOTIONAL FLYER",
+    "title": "Friday Prayer Meetings Poster",
+    "description": "High-impact blue dual-tone promotional flyer designed for weekly community prayer meetings.",
+    "image": "assets/designs/friday-prayer-meeting.jpg"
+  },
+  {
+    "id": "health-talk-seminar",
+    "badgeOverlay": "SEMINAR & TALK FLYER",
+    "badge": "HEALTH & WELLNESS FLYER",
+    "title": "Health Talk Seminar Flyer",
+    "description": "Clean medical seminar layout featuring topic details (\"Healthy eating across all blood groups\"), speaker portrait frame, medical line graphics, and time pills.",
+    "image": "assets/designs/health-talk-seminar.jpg"
+  },
+  {
+    "id": "jy-week-outline",
+    "badgeOverlay": "YOUTH PROGRAMME SCHEDULE",
+    "badge": "PROGRAMME SCHEDULE FLYER",
+    "title": "Youth Week 2026 Programme Outline",
+    "description": "Structured timetable poster featuring topic breakdowns, timing cards, and deep blue brand theme.",
+    "image": "assets/designs/jy-week-outline.jpg"
+  },
+  {
+    "id": "jy-week-teaser",
+    "badgeOverlay": "TEASER & ANNOUNCEMENT",
+    "badge": "ANNOUNCEMENT FLYER",
+    "title": "Youth Week Teaser Graphic",
+    "description": "Anticipation teaser poster design with 3D bubble title typography, custom date badges (12th to 18th July), and cutout youth portraits with outline stroke accents.",
+    "image": "assets/designs/jy-week-teaser.jpg"
+  },
+  {
+    "id": "birthday-samuel-dankwah",
+    "badgeOverlay": "INSTAGRAM & SOCIAL MEDIA",
+    "badge": "SOCIAL MEDIA CREATIVE",
+    "title": "Social Media Birthday Post: Samuel Dankwah",
+    "description": "Creative Instagram feed mockup poster with custom typography, blue background text pattern, verified badges, like counts, and engagement UI details.",
+    "image": "assets/designs/birthday-samuel-dankwah.jpg"
+  }
+]
