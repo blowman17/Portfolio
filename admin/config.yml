@@ -5,6 +5,8 @@ backend:
   base_url: https://decap-cms-oauth-pkce.netlify.app
   auth_endpoint: auth
 
+local_backend: true
+
 media_folder: "assets/uploads"
 public_folder: "assets/uploads"
 
