@@ -4,97 +4,257 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio CMS Admin</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #131927;
+      --accent: #f59e0b;
+      --text: #f4eee4;
+      --text-muted: #94a3b8;
+      --border: rgba(244, 238, 228, 0.12);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .login-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .login-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .login-card h2 {
+      margin: 0 0 8px 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .login-card p {
+      margin: 0 0 24px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .input-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .input-group input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+      outline: none;
+    }
+    .input-group input:focus {
+      border-color: var(--accent);
+    }
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: #0b0f19;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .btn-login:hover {
+      opacity: 0.9;
+    }
+    .token-guide {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .token-guide a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+  </style>
   <script>
     window.CMS_MANUAL_INIT = true;
   </script>
 </head>
 <body>
+
+  <!-- Custom Sleek Login Modal -->
+  <div id="login-overlay" class="login-overlay" style="display: none;">
+    <div class="login-card">
+      <h2>Portfolio CMS Admin</h2>
+      <p>Enter your GitHub Personal Access Token to manage engineering projects and graphic design flyers.</p>
+      
+      <form id="token-form" onsubmit="handleTokenSubmit(event)">
+        <div class="input-group">
+          <label for="gh-token">GitHub Access Token</label>
+          <input type="password" id="gh-token" placeholder="ghp_..." required autocomplete="off" />
+        </div>
+        <button type="submit" class="btn-login">Authorize &amp; Enter Dashboard →</button>
+      </form>
+
+      <div class="token-guide">
+        Need a token? <a href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio%20CMS" target="_blank" rel="noopener">Create one on GitHub ↗</a> (Check <strong>repo</strong> scope).
+      </div>
+    </div>
+  </div>
+
   <!-- Decap CMS Script -->
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    CMS.init({
-      config: {
-        backend: {
-          name: 'github',
-          repo: 'blowman17/Portfolio',
-          branch: 'main'
-        },
-        local_backend: true,
-        media_folder: 'assets/uploads',
-        public_folder: 'assets/uploads',
-        collections: [
-          {
-            name: 'projects_collection',
-            label: 'Engineering Projects',
-            files: [
-              {
-                name: 'projects_json',
-                label: 'Projects Data File',
-                file: 'content/projects.json',
-                description: 'Manage engineering projects and case study details',
-                fields: [
-                  {
-                    name: 'projects',
-                    label: 'Projects List',
-                    widget: 'list',
-                    summary: '{{fields.title}} ({{fields.role}})',
-                    fields: [
-                      { name: 'id', label: 'Project ID', widget: 'string' },
-                      { name: 'title', label: 'Project Title', widget: 'string' },
-                      { name: 'role', label: 'Role / Badge Label', widget: 'string' },
-                      { name: 'summary', label: 'Short Summary', widget: 'text' },
-                      { name: 'githubUrl', label: 'GitHub Repo URL', widget: 'string', required: false },
-                      { name: 'liveUrl', label: 'Live System URL', widget: 'string', required: false },
-                      {
-                        name: 'visualStats',
-                        label: 'Visual Metrics (Side Box)',
-                        widget: 'list',
-                        fields: [
-                          { name: 'label', label: 'Label', widget: 'string' },
-                          { name: 'val', label: 'Value', widget: 'string' }
-                        ]
-                      },
-                      {
-                        name: 'features',
-                        label: 'Case Study Highlights',
-                        widget: 'list',
-                        field: { name: 'feature', label: 'Highlight Description', widget: 'string' }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
+    function getStoredToken() {
+      try {
+        const userStr = localStorage.getItem('decap-cms-user');
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          return user.token || user.access_token || null;
+        }
+      } catch(e){}
+      return null;
+    }
+
+    function handleTokenSubmit(e) {
+      e.preventDefault();
+      const tokenInput = document.getElementById('gh-token');
+      const token = tokenInput ? tokenInput.value.trim() : '';
+      if (!token) return;
+
+      const userObj = {
+        backendName: 'github',
+        token: token,
+        access_token: token,
+        login: 'blowman17'
+      };
+
+      localStorage.setItem('decap-cms-user', JSON.stringify(userObj));
+      document.getElementById('login-overlay').style.display = 'none';
+      initCMS();
+    }
+
+    function initCMS() {
+      CMS.init({
+        config: {
+          backend: {
+            name: 'github',
+            repo: 'blowman17/Portfolio',
+            branch: 'main'
           },
-          {
-            name: 'designs_collection',
-            label: 'Graphic Design Showcase',
-            files: [
-              {
-                name: 'designs_json',
-                label: 'Designs Data File',
-                file: 'content/designs.json',
-                description: 'Manage graphic design flyer slides in the carousel',
-                fields: [
-                  {
-                    name: 'designs',
-                    label: 'Graphic Designs List',
-                    widget: 'list',
-                    summary: '{{fields.title}}',
-                    fields: [
-                      { name: 'id', label: 'Design ID', widget: 'string' },
-                      { name: 'badgeOverlay', label: 'Image Badge Overlay', widget: 'string' },
-                      { name: 'badge', label: 'Category Badge Label', widget: 'string' },
-                      { name: 'title', label: 'Design Title', widget: 'string' },
-                      { name: 'description', label: 'Description', widget: 'text' },
-                      { name: 'image', label: 'Flyer Image Upload', widget: 'image' }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+          local_backend: true,
+          media_folder: 'assets/uploads',
+          public_folder: 'assets/uploads',
+          collections: [
+            {
+              name: 'projects_collection',
+              label: 'Engineering Projects',
+              files: [
+                {
+                  name: 'projects_json',
+                  label: 'Projects Data File',
+                  file: 'content/projects.json',
+                  description: 'Manage engineering projects and case study details',
+                  fields: [
+                    {
+                      name: 'projects',
+                      label: 'Projects List',
+                      widget: 'list',
+                      summary: '{{fields.title}} ({{fields.role}})',
+                      fields: [
+                        { name: 'id', label: 'Project ID', widget: 'string' },
+                        { name: 'title', label: 'Project Title', widget: 'string' },
+                        { name: 'role', label: 'Role / Badge Label', widget: 'string' },
+                        { name: 'summary', label: 'Short Summary', widget: 'text' },
+                        { name: 'githubUrl', label: 'GitHub Repo URL', widget: 'string', required: false },
+                        { name: 'liveUrl', label: 'Live System URL', widget: 'string', required: false },
+                        {
+                          name: 'visualStats',
+                          label: 'Visual Metrics (Side Box)',
+                          widget: 'list',
+                          fields: [
+                            { name: 'label', label: 'Label', widget: 'string' },
+                            { name: 'val', label: 'Value', widget: 'string' }
+                          ]
+                        },
+                        {
+                          name: 'features',
+                          label: 'Case Study Highlights',
+                          widget: 'list',
+                          field: { name: 'feature', label: 'Highlight Description', widget: 'string' }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'designs_collection',
+              label: 'Graphic Design Showcase',
+              files: [
+                {
+                  name: 'designs_json',
+                  label: 'Designs Data File',
+                  file: 'content/designs.json',
+                  description: 'Manage graphic design flyer slides in the carousel',
+                  fields: [
+                    {
+                      name: 'designs',
+                      label: 'Graphic Designs List',
+                      widget: 'list',
+                      summary: '{{fields.title}}',
+                      fields: [
+                        { name: 'id', label: 'Design ID', widget: 'string' },
+                        { name: 'badgeOverlay', label: 'Image Badge Overlay', widget: 'string' },
+                        { name: 'badge', label: 'Category Badge Label', widget: 'string' },
+                        { name: 'title', label: 'Design Title', widget: 'string' },
+                        { name: 'description', label: 'Description', widget: 'text' },
+                        { name: 'image', label: 'Flyer Image Upload', widget: 'image' }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedToken = getStoredToken();
+      if (!storedToken) {
+        document.getElementById('login-overlay').style.display = 'flex';
+      } else {
+        initCMS();
       }
     });
   </script>
