@@ -4,10 +4,84 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio CMS Admin</title>
-  <link href="config.yml" type="text/yaml" rel="cms-config-url" />
 </head>
 <body>
   <!-- Decap CMS Script -->
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'blowman17/Portfolio',
+          branch: 'main',
+          base_url: 'https://decap-cms-oauth-pkce.netlify.app',
+          auth_endpoint: 'auth'
+        },
+        local_backend: true,
+        media_folder: 'assets/uploads',
+        public_folder: 'assets/uploads',
+        collections: [
+          {
+            name: 'projects',
+            label: 'Engineering Projects',
+            file: 'content/projects.json',
+            description: 'Manage portfolio engineering projects and case study modal details',
+            fields: [
+              {
+                name: 'projects',
+                label: 'Projects List',
+                widget: 'list',
+                fields: [
+                  { name: 'id', label: 'Project ID (e.g. stockflow)', widget: 'string' },
+                  { name: 'title', label: 'Project Title', widget: 'string' },
+                  { name: 'role', label: 'Role / Badge Label', widget: 'string' },
+                  { name: 'summary', label: 'Short Summary', widget: 'text' },
+                  { name: 'githubUrl', label: 'GitHub Repo URL', widget: 'string', required: false },
+                  { name: 'liveUrl', label: 'Live System URL', widget: 'string', required: false },
+                  {
+                    name: 'visualStats',
+                    label: 'Visual Metrics (Card Side Box)',
+                    widget: 'list',
+                    fields: [
+                      { name: 'label', label: 'Label (e.g. Database)', widget: 'string' },
+                      { name: 'val', label: 'Value (e.g. PostgreSQL)', widget: 'string' }
+                    ]
+                  },
+                  {
+                    name: 'features',
+                    label: 'Case Study Key Features',
+                    widget: 'list',
+                    field: { name: 'feature', label: 'Feature Description', widget: 'string' }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'designs',
+            label: 'Graphic Design Showcase',
+            file: 'content/designs.json',
+            description: 'Manage visual design flyer slides in the design carousel',
+            fields: [
+              {
+                name: 'designs',
+                label: 'Graphic Designs List',
+                widget: 'list',
+                fields: [
+                  { name: 'id', label: 'Design ID', widget: 'string' },
+                  { name: 'badgeOverlay', label: 'Image Badge Overlay', widget: 'string' },
+                  { name: 'badge', label: 'Design Category Badge', widget: 'string' },
+                  { name: 'title', label: 'Design Title', widget: 'string' },
+                  { name: 'description', label: 'Description', widget: 'text' },
+                  { name: 'image', label: 'Flyer Image Upload', widget: 'image' }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html>
