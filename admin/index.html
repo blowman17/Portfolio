@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio CMS Admin</title>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
 </head>
 <body>
   <!-- Decap CMS Script -->
@@ -23,14 +26,14 @@
         public_folder: 'assets/uploads',
         collections: [
           {
-            name: 'portfolio_content',
-            label: 'Portfolio Management',
+            name: 'projects_collection',
+            label: 'Engineering Projects',
             files: [
               {
-                name: 'projects_file',
-                label: 'Engineering Projects List',
+                name: 'projects_json',
+                label: 'Projects Data File',
                 file: 'content/projects.json',
-                description: 'Add, edit, or remove engineering projects and case study details',
+                description: 'Manage engineering projects and case study details',
                 fields: [
                   {
                     name: 'projects',
@@ -38,7 +41,7 @@
                     widget: 'list',
                     summary: '{{fields.title}} ({{fields.role}})',
                     fields: [
-                      { name: 'id', label: 'Project ID (e.g. stockflow)', widget: 'string' },
+                      { name: 'id', label: 'Project ID', widget: 'string' },
                       { name: 'title', label: 'Project Title', widget: 'string' },
                       { name: 'role', label: 'Role / Badge Label', widget: 'string' },
                       { name: 'summary', label: 'Short Summary', widget: 'text' },
@@ -49,8 +52,8 @@
                         label: 'Visual Metrics (Side Box)',
                         widget: 'list',
                         fields: [
-                          { name: 'label', label: 'Label (e.g. Database)', widget: 'string' },
-                          { name: 'val', label: 'Value (e.g. PostgreSQL)', widget: 'string' }
+                          { name: 'label', label: 'Label', widget: 'string' },
+                          { name: 'val', label: 'Value', widget: 'string' }
                         ]
                       },
                       {
@@ -62,12 +65,18 @@
                     ]
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            name: 'designs_collection',
+            label: 'Graphic Design Showcase',
+            files: [
               {
-                name: 'designs_file',
-                label: 'Graphic Design Showcase List',
+                name: 'designs_json',
+                label: 'Designs Data File',
                 file: 'content/designs.json',
-                description: 'Add, edit, or remove visual design flyer slides in the carousel',
+                description: 'Manage graphic design flyer slides in the carousel',
                 fields: [
                   {
                     name: 'designs',
@@ -76,7 +85,7 @@
                     summary: '{{fields.title}}',
                     fields: [
                       { name: 'id', label: 'Design ID', widget: 'string' },
-                      { name: 'badgeOverlay', label: 'Image Badge Overlay (e.g. EVENT POSTER)', widget: 'string' },
+                      { name: 'badgeOverlay', label: 'Image Badge Overlay', widget: 'string' },
                       { name: 'badge', label: 'Category Badge Label', widget: 'string' },
                       { name: 'title', label: 'Design Title', widget: 'string' },
                       { name: 'description', label: 'Description', widget: 'text' },
