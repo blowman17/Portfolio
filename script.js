@@ -310,7 +310,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const projRes = await fetch('content/projects.json');
       if (projRes.ok) {
-        const projects = await projRes.json();
+        const raw = await projRes.json();
+        const projects = Array.isArray(raw) ? raw : (raw.projects || []);
         if (projects && projects.length) {
           renderProjects(projects);
         }
@@ -322,7 +323,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const designRes = await fetch('content/designs.json');
       if (designRes.ok) {
-        const designs = await designRes.json();
+        const raw = await designRes.json();
+        const designs = Array.isArray(raw) ? raw : (raw.designs || []);
         if (designs && designs.length) {
           renderDesigns(designs);
         }
