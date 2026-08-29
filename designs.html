@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Design & Visual Identity Gallery — Philip Asante</title>
+  <meta name="description" content="Explore the full graphic design portfolio and visual identity showcase by Philip Asante, featuring brand flyers, event posters, birthday campaigns, and social media creative assets.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Specific styles for designs.html gallery page */
+    .gallery-hero {
+      padding: 140px 0 40px;
+      text-align: center;
+      position: relative;
+    }
+    .gallery-hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      margin: 12px 0 16px;
+      line-height: 1.15;
+    }
+    .gallery-hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Filter Bar */
+    .filter-bar-wrap {
+      margin: 40px 0 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(244, 238, 228, 0.12);
+      color: var(--cream);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .filter-btn:hover {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #0b0f19;
+      border-color: var(--accent);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    /* Masonry / Grid Collage */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      padding-bottom: 100px;
+    }
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .gallery-card {
+      background: var(--surface);
+      border: 1px solid rgba(244, 238, 228, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(245, 158, 11, 0.35);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    }
+    .gallery-card.hide {
+      display: none;
+    }
+
+    .gallery-img-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 125%; /* 4:5 aspect ratio */
+      background: #060911;
+      overflow: hidden;
+    }
+    .gallery-img-wrap img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-card:hover .gallery-img-wrap img {
+      transform: scale(1.05);
+    }
+    .gallery-badge-overlay {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(244, 238, 228, 0.15);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    .gallery-info {
+      padding: 20px 22px 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery-badge {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .gallery-info h3 {
+      font-size: 1.15rem;
+      margin: 0 0 8px;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+    .gallery-info p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(8, 11, 19, 0.94);
+      backdrop-filter: blur(14px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .lightbox-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-container {
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      background: #131927;
+      border: 1px solid rgba(244, 238, 228, 0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    @media (max-width: 800px) {
+      .lightbox-container {
+        flex-direction: column;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+    }
+    .lightbox-img-side {
+      flex: 1.2;
+      background: #05070e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .lightbox-img-side img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-details-side {
+      flex: 1;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .lightbox-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--cream);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+    .lightbox-close-btn:hover {
+      background: rgba(255,255,255,0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="wrap header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-text">PA</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="designs.html" class="active">Design Gallery</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#toolkit">Toolkit</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="index.html#contact" class="btn btn-primary nav-cta">Let's Talk ↗</a>
+        <button class="nav-toggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Background Orbs -->
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+
+  <main>
+    <section class="gallery-hero">
+      <div class="wrap">
+        <span class="section-tag"><span class="spark">✦</span> Visual Design Showcase</span>
+        <h1>Graphic Design &amp; <span class="accent">Visual Identity Gallery.</span></h1>
+        <p>A comprehensive collage of promotional flyers, event posters, birthday campaign graphics, and brand creative assets engineered for real client campaigns.</p>
+
+        <!-- Category Filter Pills -->
+        <div class="filter-bar-wrap">
+          <button class="filter-btn active" data-filter="all">All Works (9)</button>
+          <button class="filter-btn" data-filter="branding">Branding &amp; Beauty</button>
+          <button class="filter-btn" data-filter="events">Events &amp; Youth</button>
+          <button class="filter-btn" data-filter="birthdays">Birthdays</button>
+          <button class="filter-btn" data-filter="social">Social Media</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Rendered dynamically via JS or fallbacks -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Full Screen Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true">
+    <div class="lightbox-container">
+      <button class="lightbox-close-btn" id="lightbox-close">&times;</button>
+      <div class="lightbox-img-side">
+        <img id="lightbox-img" src="" alt="Full Resolution Graphic Design">
+      </div>
+      <div class="lightbox-details-side">
+        <div class="gallery-badge-overlay" id="lightbox-badge-overlay" style="position:static;display:inline-block;margin-bottom:12px;">DESIGN</div>
+        <div class="gallery-badge" id="lightbox-badge" style="font-size:0.85rem;margin-bottom:10px;">CREATIVE SHOWCASE</div>
+        <h2 id="lightbox-title" style="font-size:1.6rem;color:var(--cream);margin:0 0 16px;line-height:1.2;">Design Title</h2>
+        <p id="lightbox-desc" style="font-size:0.98rem;color:var(--text-muted);line-height:1.6;margin:0 0 24px;">Design Description</p>
+        <div>
+          <button class="btn btn-ghost" onclick="closeLightbox()" style="padding:10px 20px;font-size:0.88rem;">Close Preview</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-copy">
+        &copy; 2026 Philip Asante. Designed &amp; Engineered with AI-accelerated workflows.
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Back to Home ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Specific script logic for designs.html
+    document.addEventListener('DOMContentLoaded', () => {
+      const galleryGrid = document.getElementById('gallery-grid');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const lightboxModal = document.getElementById('lightbox-modal');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxBadgeOverlay = document.getElementById('lightbox-badge-overlay');
+      const lightboxBadge = document.getElementById('lightbox-badge');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      const lightboxDesc = document.getElementById('lightbox-desc');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      let allDesigns = [];
+
+      async function initGallery() {
+        try {
+          const res = await fetch('content/designs.json');
+          if (res.ok) {
+            const raw = await res.json();
+            allDesigns = Array.isArray(raw) ? raw : (raw.designs || []);
+            renderGrid(allDesigns);
+          }
+        } catch (e) {
+          console.error('Error loading gallery JSON', e);
+        }
+      }
+
+      function renderGrid(designs) {
+        if (!galleryGrid) return;
+        galleryGrid.innerHTML = designs.map(d => `
+          <div class="gallery-card reveal in" data-category="${d.category || 'branding'}" onclick="openLightbox('${d.id}')">
+            <div class="gallery-img-wrap">
+              <div class="gallery-badge-overlay">${d.badgeOverlay || 'DESIGN'}</div>
+              <img src="${d.image}" alt="${d.title}" loading="lazy">
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-badge">${d.badge || 'CREATIVE'}</div>
+              <h3>${d.title}</h3>
+              <p>${d.description}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Filter button click handlers
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+
+          const cards = document.querySelectorAll('.gallery-card');
+          cards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              card.classList.remove('hide');
+            } else {
+              card.classList.add('hide');
+            }
+          });
+        });
+      });
+
+      // Lightbox Functions
+      window.openLightbox = function(id) {
+        const item = allDesigns.find(d => d.id === id);
+        if (!item) return;
+
+        lightboxImg.src = item.image;
+        lightboxBadgeOverlay.textContent = item.badgeOverlay || 'DESIGN';
+        lightboxBadge.textContent = item.badge || 'CREATIVE';
+        lightboxTitle.textContent = item.title;
+        lightboxDesc.textContent = item.description;
+
+        lightboxModal.classList.add('active');
+        lightboxModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeLightbox = function() {
+        lightboxModal.classList.remove('active');
+        lightboxModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+      }
+
+      if (lightboxModal) {
+        lightboxModal.addEventListener('click', (e) => {
+          if (e.target === lightboxModal) closeLightbox();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+
+      initGallery();
+    });
+  </script>
+</body>
+</html>

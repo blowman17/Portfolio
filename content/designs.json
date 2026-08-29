@@ -2,6 +2,7 @@
   "designs": [
     {
       "id": "jades-lash-and-brows",
+      "category": "branding",
       "badgeOverlay": "BEAUTY & BRANDING FLYER",
       "badge": "PROMOTIONAL & SERVICES FLYER",
       "title": "Jade's Lash & Brows Promotional Flyer",
@@ -10,6 +11,7 @@
     },
     {
       "id": "youth-week-2026",
+      "category": "events",
       "badgeOverlay": "COMMUNITY & YOUTH EVENT",
       "badge": "EVENT OUTLINE & POSTER",
       "title": "Youth & Students Week Celebration 2026",
@@ -18,6 +20,7 @@
     },
     {
       "id": "birthday-philip-asante",
+      "category": "birthdays",
       "badgeOverlay": "BIRTHDAY CAMPAIGN",
       "badge": "BIRTHDAY FLYER DESIGN",
       "title": "Custom Birthday Flyer: Philip Asante",
@@ -26,6 +29,7 @@
     },
     {
       "id": "birthday-georgina",
+      "category": "birthdays",
       "badgeOverlay": "BIRTHDAY CAMPAIGN",
       "badge": "BIRTHDAY FLYER DESIGN",
       "title": "Custom Birthday Flyer: Georgina",
@@ -34,6 +38,7 @@
     },
     {
       "id": "friday-prayer-meeting",
+      "category": "events",
       "badgeOverlay": "WEEKLY EVENT POSTER",
       "badge": "PROMOTIONAL FLYER",
       "title": "Friday Prayer Meetings Poster",
@@ -42,6 +47,7 @@
     },
     {
       "id": "health-talk-seminar",
+      "category": "events",
       "badgeOverlay": "SEMINAR & TALK FLYER",
       "badge": "HEALTH & WELLNESS FLYER",
       "title": "Health Talk Seminar Flyer",
@@ -50,6 +56,7 @@
     },
     {
       "id": "jy-week-outline",
+      "category": "events",
       "badgeOverlay": "YOUTH PROGRAMME SCHEDULE",
       "badge": "PROGRAMME SCHEDULE FLYER",
       "title": "Youth Week 2026 Programme Outline",
@@ -58,6 +65,7 @@
     },
     {
       "id": "jy-week-teaser",
+      "category": "events",
       "badgeOverlay": "TEASER & ANNOUNCEMENT",
       "badge": "ANNOUNCEMENT FLYER",
       "title": "Youth Week Teaser Graphic",
@@ -66,6 +74,7 @@
     },
     {
       "id": "birthday-samuel-dankwah",
+      "category": "social",
       "badgeOverlay": "INSTAGRAM & SOCIAL MEDIA",
       "badge": "SOCIAL MEDIA CREATIVE",
       "title": "Social Media Birthday Post: Samuel Dankwah",
