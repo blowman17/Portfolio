@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background:var(--ink); color:var(--cream);">
+<body>
 
 <div id="scroll-progress"></div>
 
@@ -19,7 +19,7 @@
   <div class="navbar">
     <a href="index.html" class="logo">
       <span class="logo-mark">P/</span>
-      Philip<span class="mono" style="color:var(--orange-2)">.dev</span>
+      <span class="logo-name">Philip</span><span class="mono" style="color:var(--orange-2)">.dev</span>
     </a>
     <nav>
       <ul>
@@ -45,9 +45,9 @@
   <!-- Gallery Hero Header -->
   <section class="gallery-hero-section">
     <div class="wrap">
-      <span class="section-tag" style="color:var(--orange);"><span class="spark">✦</span> Visual Identity Gallery</span>
-      <h1>Graphic Design &amp; <span class="accent" style="color:var(--orange-2);">Visual Identity.</span></h1>
-      <p>A comprehensive gallery of promotional flyers, event posters, birthday campaign graphics, and brand creative assets engineered for real client campaigns.</p>
+      <span class="section-tag"><span class="spark">✦</span> Visual Identity Gallery</span>
+      <h1>Graphic Design &amp; <span class="accent">Visual Identity.</span></h1>
+      <p class="section-sub" style="max-width:640px;margin:0 auto;">A comprehensive gallery of promotional flyers, event posters, birthday campaign graphics, and brand creative assets engineered for real client campaigns.</p>
 
       <!-- Category Filter Pills -->
       <div class="filter-bar-wrap">
@@ -80,19 +80,19 @@
     <div class="lightbox-details-side">
       <div class="design-grid-badge-overlay" id="lightbox-badge-overlay" style="position:static;display:inline-block;margin-bottom:12px;">DESIGN</div>
       <div class="design-grid-badge" id="lightbox-badge" style="margin-bottom:8px;">CREATIVE SHOWCASE</div>
-      <h2 id="lightbox-title" style="font-family:var(--font-main);font-size:1.6rem;color:var(--cream);margin:0 0 14px;line-height:1.2;">Design Title</h2>
-      <p id="lightbox-desc" style="font-size:0.94rem;color:#B8AF9F;line-height:1.6;margin:0 0 24px;">Design Description</p>
+      <h2 id="lightbox-title" style="font-family:var(--font-main);font-size:1.6rem;color:var(--ink);margin:0 0 14px;line-height:1.2;">Design Title</h2>
+      <p id="lightbox-desc" style="font-size:0.94rem;color:var(--text-soft);line-height:1.6;margin:0 0 24px;">Design Description</p>
       <div>
-        <button class="project-link" onclick="closeLightbox()" style="background:none;border:none;cursor:pointer;font-family:'JetBrains Mono',monospace;">← Back to Gallery</button>
+        <button class="project-link" onclick="closeLightbox()" style="background:none;border:none;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:0.9rem;">← Back to Gallery</button>
       </div>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="wrap footer-inner" style="display:flex;justify-content:space-between;align-items:center;padding:30px 0;border-top:1px solid rgba(244,238,228,0.1);color:#B8AF9F;font-size:0.88rem;">
+  <div class="wrap footer-inner" style="display:flex;justify-content:space-between;align-items:center;padding:30px 0;border-top:1px solid var(--line);color:var(--text-soft);font-size:0.88rem;">
     <div>&copy; 2026 Philip Asante. All rights reserved.</div>
-    <div><a href="index.html" style="color:var(--orange);text-decoration:none;font-weight:600;">Return to Main Portfolio →</a></div>
+    <div><a href="index.html" style="color:var(--orange-2);text-decoration:none;font-weight:600;">Return to Main Portfolio →</a></div>
   </div>
 </footer>
 
