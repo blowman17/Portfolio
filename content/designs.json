@@ -1,6 +1,14 @@
 {
   "designs": [
     {
+      "id": "jades-lash-and-brows",
+      "badgeOverlay": "BEAUTY & BRANDING FLYER",
+      "badge": "PROMOTIONAL & SERVICES FLYER",
+      "title": "Jade's Lash & Brows Promotional Flyer",
+      "description": "Vibrant purple beauty services promotional flyer featuring custom typography, service listing cards, photo grid previews, and contact info layout.",
+      "image": "assets/designs/jades-lash-and-brows.jpg"
+    },
+    {
       "id": "youth-week-2026",
       "badgeOverlay": "COMMUNITY & YOUTH EVENT",
       "badge": "EVENT OUTLINE & POSTER",
